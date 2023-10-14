@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Plan extends Model
@@ -15,4 +17,9 @@ class Plan extends Model
         'short_description',
         'price'
     ];
+
+    public function signatures(): HasMany
+    {
+        return $this->HasMany(Signature::class);
+    }
 }
