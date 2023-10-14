@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('signature_histories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('signature_id')->constrained();
+            $table->timestamp('last_updated_at');
+            $table->integer('old_plan_id');
+            $table->smallInteger('old_status');
             $table->timestamps();
         });
     }
