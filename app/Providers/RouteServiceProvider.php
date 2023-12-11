@@ -43,7 +43,7 @@ class RouteServiceProvider extends ServiceProvider
     private function configureVerbs(): void
     {
         Route::resourceVerbs([
-            'create' => 'criar',
+            'create' => 'cadastrar',
             'edit' => 'editar',
             'delete' => 'deletar'
         ]);

@@ -41,5 +41,5 @@ Route::resource('plano', PlanController::class)
         VerifyCsrfToken::class
     ])
     ->parameters([
-        'plano' => 'plan'
+        'plano' => 'plan:cod'
     ]);
