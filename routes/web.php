@@ -39,4 +39,7 @@ Route::resource('plano', PlanController::class)
     ->withoutMiddleware([
         TrustProxies::class,
         VerifyCsrfToken::class
+    ])
+    ->parameters([
+        'plano' => 'plan'
     ]);
