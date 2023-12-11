@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SignatureController as SignatureControllerAlias;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Middleware\TrustProxies;
+use App\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,22 +32,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('/test', [SignatureControllerAlias::class, 'index']);
-
-//    $plan = \App\Models\Plan::create([
-//        'name' => 'First plan',
-//        'short_description' => 'A terrible plan',
-//        'price' => 2999
-//    ]);
-//
-//    $client = Auth::user()->client()->create([
-//        'document' => '19216808211',
-//        'birthdate' => '1994-01-19'
-//    ]);
-//
-//    $client->signatures()->create([
-//        'plan_id' => $plan->id,
-//        'status' => \App\Enums\SignatureStatus::ACTIVATED
-//    ]);
+Route::resource('plano', PlanController::class)
+    ->withoutMiddleware([
+        TrustProxies::class,
+        VerifyCsrfToken::class
+    ]);
