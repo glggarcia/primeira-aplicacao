@@ -13,6 +13,18 @@ class PlanController extends Controller
      */
     public function index()
     {
+        session([
+            'custom_key' => 'default-value'
+        ]);
+
+        \Cookie::queue(
+            'custom-cookie',
+            'default-cookie',
+            10
+        );
+
+        // session()->get('nome da chave');
+        // session()->forget('nome da chave');
         return Plan::all();
     }
 
