@@ -9,11 +9,13 @@ class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
+     * sail art db:seed --class=PlanSeeder
      */
     public function run(): void
     {
         $this->call([
-            UserSeeder::class
+            UserSeeder::class,
+            PlanSeeder::class
         ]);
     }
 }
